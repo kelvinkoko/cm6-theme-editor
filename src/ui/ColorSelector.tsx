@@ -1,13 +1,23 @@
 import * as React from "react";
 import { useState } from "react";
 import { SketchPicker } from "react-color";
-import { toHexString, toRgbaString } from "../model/Color";
+import { Color, toHexString, toRgbaString } from "../model/Color";
 import styles from "./ColorSelector.module.css";
 
-const ColorSelector = () => {
+type ColorSelectorProps = {
+  onChange: (color: Color) => void;
+};
+
+const ColorSelector = ({ onChange }: ColorSelectorProps) => {
   const [color, setColor] = useState({ r: 255, g: 255, b: 255, a: 1 });
   const [isShowingPicker, setIsShowingPicker] = useState(false);
   const background = toRgbaString(color);
+
+  const handleColorChange = (newColor: any) => {
+    setColor(newColor.rgb);
+    onChange(newColor.rgb);
+  };
+
   return (
     <div>
       <div className={styles.selector}>
@@ -28,12 +38,7 @@ const ColorSelector = () => {
               setIsShowingPicker(false);
             }}
           />
-          <SketchPicker
-            color={color}
-            onChange={(newColor: any) => {
-              setColor(newColor.rgb);
-            }}
-          />
+          <SketchPicker color={color} onChange={handleColorChange} />
         </div>
       ) : null}
     </div>
