@@ -11,7 +11,7 @@ const App = () => {
     <div className={styles.container}>
       <TopMenu />
       <div className={styles.main}>
-        <LeftMenu />
+        {LeftMenu(cmStyle, setCmStyle)}
         <CodeMirror style={cmStyle} />
       </div>
     </div>
