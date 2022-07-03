@@ -1,4 +1,5 @@
 import { indentWithTab } from "@codemirror/commands";
+import { javascript } from "@codemirror/lang-javascript";
 import { Compartment } from "@codemirror/state";
 import { EditorView, keymap } from "@codemirror/view";
 import * as React from "react";
@@ -16,6 +17,7 @@ const theme = new Compartment();
 
 const CodeMirror = ({ style, onChange }: CodeMirrorProps) => {
   const { ref, viewRef } = useCodeMirror([
+    javascript(),
     theme.of(createTheme(style)),
     keymap.of([indentWithTab]),
     EditorView.updateListener.of(update => {

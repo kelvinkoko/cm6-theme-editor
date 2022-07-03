@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@codemirror/basic-setup": "^0.20.0",
+    "@codemirror/lang-javascript": "0.20.0",
     "react": "^18.2.0",
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
