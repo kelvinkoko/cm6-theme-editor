@@ -10,22 +10,26 @@ import styles from "./CodeMirror.module.css";
 import useCodeMirror from "./useCodeMirror";
 type CodeMirrorProps = {
   style: CodeMirrorStyle;
+  initialValue?: string;
   onChange?: (doc: string) => void;
 };
 
 const theme = new Compartment();
 
-const CodeMirror = ({ style, onChange }: CodeMirrorProps) => {
-  const { ref, viewRef } = useCodeMirror([
-    javascript(),
-    theme.of(createTheme(style)),
-    keymap.of([indentWithTab]),
-    EditorView.updateListener.of(update => {
-      if (update.changes && onChange) {
-        onChange(update.state.doc.toString());
-      }
-    })
-  ]);
+const CodeMirror = ({ style, initialValue, onChange }: CodeMirrorProps) => {
+  const { ref, viewRef } = useCodeMirror(
+    [
+      javascript(),
+      theme.of(createTheme(style)),
+      keymap.of([indentWithTab]),
+      EditorView.updateListener.of(update => {
+        if (update.changes && onChange) {
+          onChange(update.state.doc.toString());
+        }
+      })
+    ],
+    initialValue
+  );
 
   useEffect(() => {
     if (!viewRef.current) {

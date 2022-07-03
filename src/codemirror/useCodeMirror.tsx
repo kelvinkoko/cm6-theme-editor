@@ -2,7 +2,10 @@ import { basicSetup, EditorState, EditorView } from "@codemirror/basic-setup";
 import { Extension } from "@codemirror/state";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export default function useCodeMirror(extensions: Extension[]) {
+export default function useCodeMirror(
+  extensions: Extension[],
+  initialValue?: string
+) {
   const [element, setElement] = useState<HTMLElement>();
 
   const ref = useCallback((node: HTMLElement | null) => {
@@ -17,6 +20,7 @@ export default function useCodeMirror(extensions: Extension[]) {
 
     const view = new EditorView({
       state: EditorState.create({
+        doc: initialValue ? initialValue : "",
         extensions: [basicSetup, ...extensions]
       }),
       parent: element
