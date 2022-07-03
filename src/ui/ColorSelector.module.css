@@ -1,6 +1,6 @@
 .selector {
   display: inline-flex;
-  padding: 8px;
+  padding: 8px 10px;
   align-items: center;
   border-radius: 4px;
   background: #fff;
@@ -9,7 +9,7 @@
 .hexText {
   color: rgb(113 117 127);
   font-size: 15px;
-  margin-right: 10px;
+  margin-right: 18px;
 }
 
 .color {

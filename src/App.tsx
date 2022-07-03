@@ -4,7 +4,7 @@ import { hot } from "react-hot-loader/root";
 import styles from "./App.module.css";
 import CodeMirror from "./codemirror/CodeMirror";
 import { CodeMirrorStyle } from "./model/CodeMirrorStyle";
-import ColorSelector from "./ui/ColorSelector";
+import StyleItem from "./ui/StyleItem";
 const App = () => {
   const [cmStyle, setCmStyle] = useState<CodeMirrorStyle>({});
   return (
@@ -28,9 +28,16 @@ const LeftMenu = (
 ) => {
   return (
     <div className={styles.leftMenu}>
-      <ColorSelector
-        onChange={color => {
+      <StyleItem
+        title={"Background"}
+        setColor={color => {
           setCmStyle({ ...cmStyle, editorBackgroundColor: color });
+        }}
+      />
+      <StyleItem
+        title={"Color"}
+        setColor={color => {
+          setCmStyle({ ...cmStyle, editorColor: color });
         }}
       />
     </div>

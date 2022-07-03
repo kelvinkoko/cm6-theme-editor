@@ -63,6 +63,9 @@ const createEditorStyle = (cmStyle: CodeMirrorStyle) => {
   if (cmStyle.editorBackgroundColor) {
     style.backgroundColor = toHexString(cmStyle.editorBackgroundColor);
   }
+  if (cmStyle.editorColor) {
+    style.color = toHexString(cmStyle.editorColor);
+  }
   return style;
 };
 export default CodeMirror;
