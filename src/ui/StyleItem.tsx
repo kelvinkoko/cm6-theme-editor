@@ -6,10 +6,11 @@ import styles from "./StyleItem.module.css";
 type StyleItemProps = {
   title: string;
   setColor: (color: Color) => void;
+  className?: string;
 };
-const StyleItem = ({ title, setColor }: StyleItemProps) => {
+const StyleItem = ({ title, setColor, className }: StyleItemProps) => {
   return (
-    <div>
+    <div className={className}>
       <div className={styles.title}>{title}</div>
       <ColorSelector onChange={setColor} />
     </div>

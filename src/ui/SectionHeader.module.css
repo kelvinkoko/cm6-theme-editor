@@ -1,0 +1,23 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 22px;
+  color: #1d1e1f;
+}
+
+.arrow {
+  margin-right: 10px;
+  width: 10px;
+}
+
+.separator {
+  height: 1px;
+  background-color: #dddfe3;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
