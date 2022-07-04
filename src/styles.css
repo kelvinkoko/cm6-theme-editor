@@ -1,3 +1,7 @@
+:root {
+  --top-menu-height: 80px;
+}
+
 body {
   margin: 0;
   background-color: #f7f9fc;
