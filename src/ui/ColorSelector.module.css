@@ -9,6 +9,7 @@
 .hexText {
   color: rgb(113 117 127);
   font-size: 15px;
+  font-family: monaco, Consolas, "Lucida Console", monospace;
   margin-right: 18px;
 }
 
