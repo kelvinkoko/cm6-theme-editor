@@ -66,12 +66,8 @@ const createEditorStyle = (cmStyle: CodeMirrorStyle) => {
     width: "80%",
     boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25);"
   };
-  if (cmStyle.editorBackgroundColor) {
-    style.backgroundColor = toHexString(cmStyle.editorBackgroundColor);
-  }
-  if (cmStyle.editorColor) {
-    style.color = toHexString(cmStyle.editorColor);
-  }
+  style.backgroundColor = toHexString(cmStyle.editorBackgroundColor);
+  style.color = toHexString(cmStyle.editorColor);
   return style;
 };
 export default CodeMirror;

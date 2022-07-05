@@ -5,11 +5,12 @@ import { Color, toHexString, toRgbaString } from "../model/Color";
 import styles from "./ColorSelector.module.css";
 
 type ColorSelectorProps = {
+  initialColor: Color;
   onChange: (color: Color) => void;
 };
 
-const ColorSelector = ({ onChange }: ColorSelectorProps) => {
-  const [color, setColor] = useState({ r: 255, g: 255, b: 255, a: 1 });
+const ColorSelector = ({ initialColor, onChange }: ColorSelectorProps) => {
+  const [color, setColor] = useState<Color>(initialColor);
   const [isShowingPicker, setIsShowingPicker] = useState(false);
   const background = toRgbaString(color);
 
