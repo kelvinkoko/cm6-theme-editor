@@ -22,7 +22,11 @@ const App = () => {
 };
 
 const TopMenu = () => {
-  return <div className={styles.topMenu}></div>;
+  return (
+    <div className={styles.topMenu}>
+      <div className={styles.topTitle}> CodeMirror 6 Theme Editor</div>
+    </div>
+  );
 };
 
 const LeftMenu = (
