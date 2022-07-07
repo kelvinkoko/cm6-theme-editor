@@ -9,6 +9,7 @@ import DefaultStyle from "./model/DefaultStyle";
 import { TEMPLATE_JS } from "./model/TemplateString";
 import SectionHeader from "./ui/SectionHeader";
 import StyleItem from "./ui/StyleItem";
+import ToggleButtonPanel from "./ui/ToggleButtonPanel";
 
 const App = () => {
   const [cmStyle, setCmStyle] = useState<CodeMirrorStyle>(DefaultStyle);
@@ -27,6 +28,7 @@ const TopMenu = () => {
   return (
     <div className={styles.topMenu}>
       <div className={styles.topTitle}> CodeMirror 6 Theme Editor</div>
+      <ToggleButtonPanel />
     </div>
   );
 };

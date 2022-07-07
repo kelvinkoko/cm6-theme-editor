@@ -1,0 +1,26 @@
+.panel {
+  display: flex;
+  color: #757575;
+  cursor: pointer;
+}
+
+.leftButton {
+  border-radius: 12px 0px 0px 12px;
+}
+
+.rightButton {
+  border-radius: 0px 12px 12px 0px;
+}
+
+.pressed {
+  background: #f1f4f6;
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 1px;
+}

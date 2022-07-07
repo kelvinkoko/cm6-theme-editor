@@ -7,8 +7,8 @@
 
 .topMenu {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
   width: 100%;
   height: var(--top-menu-height);
   flex-shrink: 0;

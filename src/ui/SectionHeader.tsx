@@ -1,5 +1,5 @@
 import * as React from "react";
-import arrow from "../images/arrow.svg";
+import Arrow from "../images/arrow.svg";
 import styles from "./SectionHeader.module.css";
 type SectionHeaderProps = {
   title: string;
@@ -10,7 +10,7 @@ const SectionHeader = ({ title }: SectionHeaderProps) => {
     <div>
       <div className={styles.row}>
         <div className={styles.title}>{title}</div>
-        <img className={styles.arrow} src={arrow} />
+        <Arrow viewBox="0 0 13 8" className={styles.arrow} />
       </div>
       <div className={styles.separator}></div>
     </div>
