@@ -2,11 +2,10 @@ import * as React from "react";
 import { useState } from "react";
 import { hot } from "react-hot-loader/root";
 import styles from "./App.module.css";
-import CodeMirror from "./codemirror/CodeMirror";
 import { CodeMirrorStyle } from "./model/CodeMirrorStyle";
 import { Color } from "./model/Color";
 import DefaultStyle from "./model/DefaultStyle";
-import { TEMPLATE_JS } from "./model/TemplateString";
+import Preview from "./ui/Preview";
 import SectionHeader from "./ui/SectionHeader";
 import StyleItem from "./ui/StyleItem";
 import ToggleButtonPanel from "./ui/ToggleButtonPanel";
@@ -18,7 +17,7 @@ const App = () => {
       <TopMenu />
       <div className={styles.main}>
         {LeftMenu(cmStyle, setCmStyle)}
-        <CodeMirror style={cmStyle} initialValue={TEMPLATE_JS} />
+        <Preview cmStyle={cmStyle} />
       </div>
     </div>
   );
