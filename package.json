@@ -15,10 +15,12 @@
   "dependencies": {
     "@codemirror/basic-setup": "^0.20.0",
     "@codemirror/lang-javascript": "0.20.0",
+    "@reduxjs/toolkit": "^1.8.3",
     "react": "^18.2.0",
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
     "react-hot-loader": "^4.13.0",
+    "react-redux": "^7.2.8",
     "reactcss": "^1.2.3"
   },
   "devDependencies": {

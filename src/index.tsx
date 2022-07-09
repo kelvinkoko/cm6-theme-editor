@@ -1,8 +1,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
+import { Provider } from "react-redux";
 import App from "./App";
+import { store } from "./store/Store";
 import "./styles.css";
-
 var mountNode = document.getElementById("app");
-ReactDOM.render(<App />, mountNode);
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  mountNode
+);

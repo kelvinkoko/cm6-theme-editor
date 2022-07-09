@@ -1,26 +1,42 @@
 import * as React from "react";
 import { useState } from "react";
 import { hot } from "react-hot-loader/root";
+import { useSelector } from "react-redux";
 import styles from "./App.module.css";
 import { CodeMirrorStyle } from "./model/CodeMirrorStyle";
 import { Color } from "./model/Color";
 import DefaultStyle from "./model/DefaultStyle";
+import { Page } from "./store/EditorSlice";
+import { RootState } from "./store/Store";
 import Preview from "./ui/Preview";
 import SectionHeader from "./ui/SectionHeader";
 import StyleItem from "./ui/StyleItem";
+import ThemeOutput from "./ui/ThemeOutput";
 import ToggleButtonPanel from "./ui/ToggleButtonPanel";
 
 const App = () => {
   const [cmStyle, setCmStyle] = useState<CodeMirrorStyle>(DefaultStyle);
+  const page = useSelector((state: RootState) => state.editor.page);
+
   return (
     <div className={styles.container}>
       <TopMenu />
       <div className={styles.main}>
         {LeftMenu(cmStyle, setCmStyle)}
-        <Preview cmStyle={cmStyle} />
+        {getPage(page, cmStyle)}
       </div>
     </div>
   );
+};
+
+const getPage = (page: Page, cmStyle: CodeMirrorStyle) => {
+  switch (page) {
+    case Page.Code:
+      return <ThemeOutput />;
+    case Page.Preview:
+    default:
+      return <Preview cmStyle={cmStyle} />;
+  }
 };
 
 const TopMenu = () => {
