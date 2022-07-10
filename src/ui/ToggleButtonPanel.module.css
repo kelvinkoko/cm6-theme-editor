@@ -2,6 +2,8 @@
   display: flex;
   color: #757575;
   cursor: pointer;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .leftButton {
