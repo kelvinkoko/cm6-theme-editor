@@ -1,12 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Page } from "../model/Page";
 
 export interface EditorState {
   page: Page;
-}
-
-export enum Page {
-  Preview,
-  Code
 }
 
 const initialState: EditorState = {

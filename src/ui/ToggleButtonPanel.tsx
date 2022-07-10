@@ -2,7 +2,8 @@ import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Code from "../images/code.svg";
 import Monitor from "../images/monitor.svg";
-import { Page, setPage } from "../store/EditorSlice";
+import { Page } from "../model/Page";
+import { setPage } from "../store/EditorSlice";
 import { RootState } from "../store/Store";
 import ToggleButton from "./ToggleButton";
 import styles from "./ToggleButtonPanel.module.css";
@@ -28,7 +29,7 @@ const ToggleButtonPanel = ({}) => {
         onClick={() => dispatch(setPage(Page.Code))}
         className={codeClassName}
       >
-        Code
+        Export
         <Code viewBox="0 0 24 24" className={styles.icon} />
       </ToggleButton>
     </div>
