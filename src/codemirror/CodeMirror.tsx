@@ -5,9 +5,10 @@ import { EditorView, keymap } from "@codemirror/view";
 import * as React from "react";
 import { useEffect } from "react";
 import { CodeMirrorStyle } from "../model/CodeMirrorStyle";
-import { toHexString } from "../model/Color";
+import { toThemeObject } from "../themeGenerator/ThemeGenerator";
 import styles from "./CodeMirror.module.css";
 import useCodeMirror from "./useCodeMirror";
+
 type CodeMirrorProps = {
   style: CodeMirrorStyle;
   initialValue?: string;
@@ -52,22 +53,8 @@ const setTheme = (
 };
 
 const createTheme = (cmStyle: CodeMirrorStyle) => {
-  const theme = EditorView.theme({
-    "&": createEditorStyle(cmStyle),
-    ".cm-scroller": { overflow: "auto" },
-    ".cm-wrap": { height: "100%" }
-  });
+  const theme = EditorView.theme(toThemeObject(cmStyle));
   return theme;
 };
 
-const createEditorStyle = (cmStyle: CodeMirrorStyle) => {
-  const style: any = {
-    height: "80%",
-    width: "80%",
-    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25);"
-  };
-  style.backgroundColor = toHexString(cmStyle.editorBackgroundColor);
-  style.color = toHexString(cmStyle.editorColor);
-  return style;
-};
 export default CodeMirror;
