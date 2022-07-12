@@ -1,8 +1,5 @@
 import { CodeMirrorStyle } from "../model/CodeMirrorStyle";
 import { toHexString } from "../model/Color";
-import DefaultStyle from "../model/DefaultStyle";
-
-const THEME_NAME = "myTheme";
 
 const createEditorStyle = (cmStyle: CodeMirrorStyle) => {
   const style: any = {
@@ -24,12 +21,13 @@ export const toThemeObject = (cmStyle: CodeMirrorStyle) => {
   return theme;
 };
 
-const output = `
-export const basicDark = EditorView.theme({
-    ${JSON.stringify(toThemeObject(DefaultStyle), null, 4)}
-})
-`;
+export const generate = (themeName: string, style: CodeMirrorStyle): string => {
+  const output = `
+import { EditorView } from '@codemirror/view'
 
-export const generate = (style: CodeMirrorStyle): string => {
+export const basicDark = EditorView.theme(
+    ${JSON.stringify(toThemeObject(style), null, 4)}
+)
+`;
   return output;
 };

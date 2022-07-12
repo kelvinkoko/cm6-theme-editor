@@ -8,7 +8,6 @@ import { CodeMirrorStyle } from "../model/CodeMirrorStyle";
 import { toThemeObject } from "../themeGenerator/ThemeGenerator";
 import styles from "./CodeMirror.module.css";
 import useCodeMirror from "./useCodeMirror";
-
 type CodeMirrorProps = {
   style: CodeMirrorStyle;
   initialValue?: string;

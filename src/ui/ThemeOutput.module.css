@@ -1,0 +1,14 @@
+.downloadButton {
+  color: #ffffff;
+  width: 270px;
+  height: 60px;
+  background: #187fde;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
