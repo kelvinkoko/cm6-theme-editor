@@ -1,6 +1,6 @@
 import { indentWithTab } from "@codemirror/commands";
 import { javascript } from "@codemirror/lang-javascript";
-import { Compartment } from "@codemirror/state";
+import { Compartment, Extension } from "@codemirror/state";
 import { EditorView, keymap } from "@codemirror/view";
 import * as React from "react";
 import { useEffect } from "react";
@@ -8,15 +8,22 @@ import { CodeMirrorStyle } from "../model/CodeMirrorStyle";
 import { toThemeObject } from "../themeGenerator/ThemeGenerator";
 import styles from "./CodeMirror.module.css";
 import useCodeMirror from "./useCodeMirror";
+
 type CodeMirrorProps = {
   style: CodeMirrorStyle;
+  extensions?: Extension[];
   initialValue?: string;
   onChange?: (doc: string) => void;
 };
 
 const theme = new Compartment();
 
-const CodeMirror = ({ style, initialValue, onChange }: CodeMirrorProps) => {
+const CodeMirror = ({
+  style,
+  extensions,
+  initialValue,
+  onChange
+}: CodeMirrorProps) => {
   const { ref, viewRef } = useCodeMirror(
     [
       javascript(),
@@ -26,7 +33,8 @@ const CodeMirror = ({ style, initialValue, onChange }: CodeMirrorProps) => {
         if (update.changes && onChange) {
           onChange(update.state.doc.toString());
         }
-      })
+      }),
+      ...(extensions || [])
     ],
     initialValue
   );

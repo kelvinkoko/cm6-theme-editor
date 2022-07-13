@@ -1,3 +1,10 @@
+.mainLayout {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .downloadButton {
   color: #ffffff;
   width: 270px;
@@ -11,4 +18,10 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.usageText {
+  font-weight: 400;
+  width: 80%;
+  color: #5f5f5f;
 }
