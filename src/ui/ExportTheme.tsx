@@ -5,8 +5,9 @@ import DefaultStyle from "../model/DefaultStyle";
 import { RootState } from "../store/Store";
 import { generate } from "../themeGenerator/ThemeGenerator";
 import { download } from "../utils/Downloader";
-import styles from "./ThemeOutput.module.css";
-const ThemeOutput = () => {
+import styles from "./ExportTheme.module.css";
+
+const ExportTheme = () => {
   const cmStyle = useSelector((state: RootState) => state.theme.style);
   const THEME_NAME = "myTheme";
   const filename = `${THEME_NAME}.js`;
@@ -26,4 +27,4 @@ const ThemeOutput = () => {
   );
 };
 
-export default ThemeOutput;
+export default ExportTheme;

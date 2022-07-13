@@ -7,10 +7,10 @@ import { Color } from "./model/Color";
 import { Page } from "./model/Page";
 import { RootState } from "./store/Store";
 import { setStyle } from "./store/ThemeSlice";
+import ExportTheme from "./ui/ExportTheme";
 import Preview from "./ui/Preview";
 import SectionHeader from "./ui/SectionHeader";
 import StyleItem from "./ui/StyleItem";
-import ThemeOutput from "./ui/ThemeOutput";
 import ToggleButtonPanel from "./ui/ToggleButtonPanel";
 
 const App = () => {
@@ -34,7 +34,7 @@ const App = () => {
 const getPage = (page: Page, cmStyle: CodeMirrorStyle) => {
   switch (page) {
     case Page.Code:
-      return <ThemeOutput />;
+      return <ExportTheme />;
     case Page.Preview:
     default:
       return <Preview cmStyle={cmStyle} />;
