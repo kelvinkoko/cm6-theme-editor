@@ -29,7 +29,7 @@ const ExportTheme = () => {
       <CodeMirror
         style={DefaultStyle}
         className={styles.codeMirrorContainer}
-        initialValue={theme}
+        initialValue={createUsageSampleCode(THEME_NAME)}
         extensions={[
           EditorView.theme({
             "&": {
@@ -42,6 +42,21 @@ const ExportTheme = () => {
       />
     </div>
   );
+};
+
+const createUsageSampleCode = (themeName: string) => {
+  return `import { EditorView, basicSetup } from 'codemirror'
+import { ${themeName} } from './${themeName}'
+
+let editor = new EditorView({
+  doc: 'Hello',
+  extensions: [
+    basicSetup,
+    ${themeName}
+  ],
+  parent: document.body
+})
+`;
 };
 
 export default ExportTheme;
