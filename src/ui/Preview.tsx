@@ -1,15 +1,14 @@
 import { EditorView } from "@codemirror/basic-setup";
 import * as React from "react";
+import { useSelector } from "react-redux";
 import CodeMirror from "../codemirror/CodeMirror";
-import { CodeMirrorStyle } from "../model/CodeMirrorStyle";
 import { TEMPLATE_JS } from "../model/TemplateString";
+import { RootState } from "../store/Store";
 import styles from "./Preview.module.css";
 
-type PreviewProps = {
-  cmStyle: CodeMirrorStyle;
-};
+const Preview = () => {
+  const cmStyle = useSelector((state: RootState) => state.theme.style);
 
-const Preview = ({ cmStyle }: PreviewProps) => {
   return (
     <CodeMirror
       style={cmStyle}
