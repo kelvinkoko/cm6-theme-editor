@@ -5,7 +5,7 @@ import { CodeMirrorStyle } from "./model/CodeMirrorStyle";
 import { Color } from "./model/Color";
 import { RootState } from "./store/Store";
 import { setStyle } from "./store/ThemeSlice";
-import SectionHeader from "./ui/SectionHeader";
+import Section from "./ui/Section";
 import StyleItem from "./ui/StyleItem";
 
 const LeftMenu = () => {
@@ -19,19 +19,20 @@ const LeftMenu = () => {
 
   return (
     <div className={styles.leftMenu}>
-      <SectionHeader title="Editor" />
-      <StyleItem
-        className={styles.styleItem}
-        title={"Background"}
-        initialColor={cmStyle.editorBackgroundColor}
-        setColor={setStyleField(cmStyle, setCmStyle, "editorBackgroundColor")}
-      />
-      <StyleItem
-        className={styles.styleItem}
-        title={"Text"}
-        initialColor={cmStyle.editorColor}
-        setColor={setStyleField(cmStyle, setCmStyle, "editorColor")}
-      />
+      <Section title="Editor">
+        <StyleItem
+          className={styles.styleItem}
+          title={"Background"}
+          initialColor={cmStyle.editorBackgroundColor}
+          setColor={setStyleField(cmStyle, setCmStyle, "editorBackgroundColor")}
+        />
+        <StyleItem
+          className={styles.styleItem}
+          title={"Text"}
+          initialColor={cmStyle.editorColor}
+          setColor={setStyleField(cmStyle, setCmStyle, "editorColor")}
+        />
+      </Section>
     </div>
   );
 };
