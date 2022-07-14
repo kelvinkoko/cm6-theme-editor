@@ -17,6 +17,10 @@
   height: 8px;
 }
 
+.rotate {
+  transform: rotate(180deg);
+}
+
 .separator {
   height: 1px;
   background-color: #dddfe3;

@@ -8,24 +8,37 @@ type SectionProps = {
 };
 
 const Section = ({ title, children }: SectionProps) => {
+  const [isExpanded, setIsExpanded] = React.useState(true);
+
   return (
     <div className={styles.section}>
-      <SectionHeader title={title} />
-      {children}
+      <SectionHeader
+        title={title}
+        isExpanded={isExpanded}
+        onClick={() => {
+          setIsExpanded(!isExpanded);
+        }}
+      />
+      {isExpanded ? children : null}
     </div>
   );
 };
 
 type SectionHeader = {
   title: string;
+  isExpanded: boolean;
+  onClick: () => void;
 };
 
-const SectionHeader = ({ title }: SectionHeader) => {
+const SectionHeader = ({ title, isExpanded, onClick }: SectionHeader) => {
   return (
-    <div>
+    <div onClick={onClick}>
       <div className={styles.row}>
         <div className={styles.title}>{title}</div>
-        <Arrow viewBox="0 0 13 8" className={styles.arrow} />
+        <Arrow
+          viewBox="0 0 13 8"
+          className={`${styles.arrow} ${isExpanded ? "" : styles.rotate}`}
+        />
       </div>
       <div className={styles.separator}></div>
     </div>
