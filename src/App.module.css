@@ -21,7 +21,11 @@
   font-weight: 300;
   font-size: 28px;
   color: #3b6eba;
-  margin-left: 24px;
+  /* Fix width for title to make the toggle button align with the center of Preview area */
+  /* minus the margin */
+  width: calc(var(--left-menu-width) - 25px);
+  white-space: nowrap;
+  margin-left: 25px;
 }
 
 .main {
@@ -35,7 +39,8 @@
 
 .leftMenu {
   flex: auto 0 0;
-  width: 220px;
+  /* minus the padding */
+  width: calc(var(--left-menu-width) - 15px - 15px);
   padding: 15px;
   background: #ffffff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);

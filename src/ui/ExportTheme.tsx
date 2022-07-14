@@ -24,7 +24,7 @@ const ExportTheme = () => {
         download {filename}
       </div>
       <div className={styles.usageText}>
-        Add {filename} to your project as extension like below:
+        Add {filename} to CodeMirror in your project as extension like below:
       </div>
       <CodeMirror
         style={DefaultStyle}

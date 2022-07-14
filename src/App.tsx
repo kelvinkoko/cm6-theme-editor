@@ -7,11 +7,11 @@ import { Color } from "./model/Color";
 import { Page } from "./model/Page";
 import { RootState } from "./store/Store";
 import { setStyle } from "./store/ThemeSlice";
+import TopMenu from "./TopMenu";
 import ExportTheme from "./ui/ExportTheme";
 import Preview from "./ui/Preview";
 import SectionHeader from "./ui/SectionHeader";
 import StyleItem from "./ui/StyleItem";
-import ToggleButtonPanel from "./ui/ToggleButtonPanel";
 
 const App = () => {
   const cmStyle = useSelector((state: RootState) => state.theme.style);
@@ -39,15 +39,6 @@ const getPage = (page: Page, cmStyle: CodeMirrorStyle) => {
     default:
       return <Preview cmStyle={cmStyle} />;
   }
-};
-
-const TopMenu = () => {
-  return (
-    <div className={styles.topMenu}>
-      <div className={styles.topTitle}> CodeMirror 6 Theme Editor</div>
-      <ToggleButtonPanel />
-    </div>
-  );
 };
 
 const LeftMenu = (
