@@ -24,10 +24,11 @@ const ExportTheme = () => {
         download {filename}
       </div>
       <div className={styles.usageText}>
-        Download theme.js and include it as extension like below
+        Add {filename} to your project as extension like below:
       </div>
       <CodeMirror
         style={DefaultStyle}
+        className={styles.codeMirrorContainer}
         initialValue={theme}
         extensions={[
           EditorView.theme({

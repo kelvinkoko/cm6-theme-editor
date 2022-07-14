@@ -6,11 +6,11 @@ import * as React from "react";
 import { useEffect } from "react";
 import { CodeMirrorStyle } from "../model/CodeMirrorStyle";
 import { toThemeObject } from "../themeGenerator/ThemeGenerator";
-import styles from "./CodeMirror.module.css";
 import useCodeMirror from "./useCodeMirror";
 
 type CodeMirrorProps = {
   style: CodeMirrorStyle;
+  className?: string;
   extensions?: Extension[];
   initialValue?: string;
   onChange?: (doc: string) => void;
@@ -20,6 +20,7 @@ const theme = new Compartment();
 
 const CodeMirror = ({
   style,
+  className,
   extensions,
   initialValue,
   onChange
@@ -46,7 +47,7 @@ const CodeMirror = ({
     setTheme(viewRef.current, theme, style);
   }, [style]);
 
-  return <div className={styles.container} ref={ref} />;
+  return <div className={className} ref={ref} />;
 };
 
 const setTheme = (

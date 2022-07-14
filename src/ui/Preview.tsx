@@ -3,6 +3,8 @@ import * as React from "react";
 import CodeMirror from "../codemirror/CodeMirror";
 import { CodeMirrorStyle } from "../model/CodeMirrorStyle";
 import { TEMPLATE_JS } from "../model/TemplateString";
+import styles from "./Preview.module.css";
+
 type PreviewProps = {
   cmStyle: CodeMirrorStyle;
 };
@@ -11,6 +13,7 @@ const Preview = ({ cmStyle }: PreviewProps) => {
   return (
     <CodeMirror
       style={cmStyle}
+      className={styles.codeMirrorContainer}
       initialValue={TEMPLATE_JS}
       extensions={[
         EditorView.theme({
