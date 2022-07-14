@@ -17,13 +17,17 @@ const App = () => {
       <TopMenu />
       <div className={styles.main}>
         <LeftMenu />
-        {getPage(page)}
+        <MainContent page={page} />
       </div>
     </div>
   );
 };
 
-const getPage = (page: Page) => {
+type MainContentProps = {
+  page: Page;
+};
+
+const MainContent = ({ page }: MainContentProps) => {
   switch (page) {
     case Page.Code:
       return <ExportTheme />;
