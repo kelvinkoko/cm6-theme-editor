@@ -1,6 +1,5 @@
-import { Color } from "./Color";
+import { ColorItem } from "./ColorItem";
 
 export interface CodeMirrorStyle {
-  editorBackgroundColor: Color;
-  editorColor: Color;
+  editorStyle: ColorItem[];
 }

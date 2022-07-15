@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./App.module.css";
-import { CodeMirrorStyle } from "./model/CodeMirrorStyle";
 import { Color } from "./model/Color";
 import { RootState } from "./store/Store";
 import { setStyle } from "./store/ThemeSlice";
@@ -11,43 +10,38 @@ import StyleItem from "./ui/StyleItem";
 const LeftMenu = () => {
   const cmStyle = useSelector((state: RootState) => state.theme.style);
   const dispatch = useDispatch();
-  const setCmStyle: (style: CodeMirrorStyle) => void = (
-    style: CodeMirrorStyle
-  ) => {
-    dispatch(setStyle(style));
-  };
 
   return (
     <div className={styles.leftMenu}>
       <Section title="Editor">
-        <StyleItem
-          className={styles.styleItem}
-          title={"Background"}
-          initialColor={cmStyle.editorBackgroundColor}
-          setColor={setStyleField(cmStyle, setCmStyle, "editorBackgroundColor")}
-        />
-        <StyleItem
-          className={styles.styleItem}
-          title={"Text"}
-          initialColor={cmStyle.editorColor}
-          setColor={setStyleField(cmStyle, setCmStyle, "editorColor")}
-        />
+        {cmStyle.editorStyle.map((style, index) => (
+          <StyleItem
+            key={index}
+            title={style.name}
+            initialColor={style.color}
+            setColor={(color: Color) => {
+              const newStyle = {
+                ...cmStyle,
+                editorStyle: updateArray(cmStyle.editorStyle, index, {
+                  ...style,
+                  color
+                })
+              };
+              dispatch(setStyle(newStyle));
+            }}
+          />
+        ))}
       </Section>
     </div>
   );
 };
 
-// Function that set a particular field of the CodeMirrorStyle object
-// and return a new object with the new value.
-const setStyleField = (
-  cmStyle: CodeMirrorStyle,
-  setCmStyle: (style: CodeMirrorStyle) => void,
-  field: keyof CodeMirrorStyle
-): ((color: Color) => void) => {
-  return (color: Color) => {
-    const newStyle: CodeMirrorStyle = { ...cmStyle, [field]: color };
-    setCmStyle(newStyle);
-  };
+// Update a readonly array with index and object as input
+// Return a new array with the updated object
+const updateArray = (array: readonly any[], index: number, object: any) => {
+  const newArray = [...array];
+  newArray[index] = object;
+  return newArray;
 };
 
 export default LeftMenu;

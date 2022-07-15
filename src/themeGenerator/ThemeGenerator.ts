@@ -1,19 +1,14 @@
 import { CodeMirrorStyle } from "../model/CodeMirrorStyle";
-import { toHexString } from "../model/Color";
-
-const createEditorStyle = (cmStyle: CodeMirrorStyle) => {
-  const style = {} as any;
-  style.backgroundColor = toHexString(cmStyle.editorBackgroundColor);
-  style.color = toHexString(cmStyle.editorColor);
-  return style;
-};
+import { deepMergeObject } from "../utils/ObjectUtils";
 
 export const toThemeObject = (cmStyle: CodeMirrorStyle) => {
-  const theme = {
-    "&": createEditorStyle(cmStyle),
+  let theme = {
     ".cm-scroller": { overflow: "auto" },
     ".cm-wrap": { height: "100%" }
   };
+  cmStyle.editorStyle.forEach(style => {
+    theme = deepMergeObject(theme, style.appendToTheme(style.color));
+  });
   return theme;
 };
 
