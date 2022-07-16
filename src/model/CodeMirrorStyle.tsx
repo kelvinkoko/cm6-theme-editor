@@ -1,5 +1,5 @@
-import { ColorItem } from "./ColorItem";
+import SectionData from "./SectionData";
 
 export interface CodeMirrorStyle {
-  editorStyle: ColorItem[];
+  sections: SectionData[];
 }

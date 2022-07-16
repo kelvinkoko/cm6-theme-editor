@@ -10,28 +10,37 @@ import StyleItem from "./ui/StyleItem";
 const LeftMenu = () => {
   const cmStyle = useSelector((state: RootState) => state.theme.style);
   const dispatch = useDispatch();
-
   return (
     <div className={styles.leftMenu}>
-      <Section title="Editor">
-        {cmStyle.editorStyle.map((style, index) => (
-          <StyleItem
-            key={index}
-            title={style.name}
-            initialColor={style.color}
-            setColor={(color: Color) => {
-              const newStyle = {
-                ...cmStyle,
-                editorStyle: updateArray(cmStyle.editorStyle, index, {
-                  ...style,
-                  color
-                })
-              };
-              dispatch(setStyle(newStyle));
-            }}
-          />
-        ))}
-      </Section>
+      {cmStyle.sections.map((section, sectionIndex) => (
+        <Section key={sectionIndex} title={section.title}>
+          {section.items.map((style, itemIndex) => (
+            <StyleItem
+              key={itemIndex}
+              title={style.name}
+              initialColor={style.color}
+              setColor={(color: Color) => {
+                const newStyleInThisSection = {
+                  ...section,
+                  items: updateArray(section.items, itemIndex, {
+                    ...style,
+                    color
+                  })
+                };
+                const newStyle = {
+                  ...cmStyle,
+                  sections: updateArray(
+                    cmStyle.sections,
+                    sectionIndex,
+                    newStyleInThisSection
+                  )
+                };
+                dispatch(setStyle(newStyle));
+              }}
+            />
+          ))}
+        </Section>
+      ))}
     </div>
   );
 };

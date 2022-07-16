@@ -6,8 +6,10 @@ export const toThemeObject = (cmStyle: CodeMirrorStyle) => {
     ".cm-scroller": { overflow: "auto" },
     ".cm-wrap": { height: "100%" }
   };
-  cmStyle.editorStyle.forEach(style => {
-    theme = deepMergeObject(theme, style.appendToTheme(style.color));
+  cmStyle.sections.forEach(section => {
+    section.items.forEach(style => {
+      theme = deepMergeObject(theme, style.appendToTheme(style.color));
+    });
   });
   return theme;
 };

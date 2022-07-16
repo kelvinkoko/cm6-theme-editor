@@ -2,20 +2,25 @@ import { CodeMirrorStyle } from "./CodeMirrorStyle";
 import { toColor, toHexString } from "./Color";
 
 const DefaultStyle: CodeMirrorStyle = {
-  editorStyle: [
+  sections: [
     {
-      name: "editorBackgroundColor",
-      color: toColor("#ffffff"),
-      appendToTheme: color => {
-        return { "&": { backgroundColor: toHexString(color) } };
-      }
-    },
-    {
-      name: "editorColor",
-      color: toColor("#000000"),
-      appendToTheme: color => {
-        return { "&": { color: toHexString(color) } };
-      }
+      title: "Editor",
+      items: [
+        {
+          name: "editorBackgroundColor",
+          color: toColor("#ffffff"),
+          appendToTheme: color => {
+            return { "&": { backgroundColor: toHexString(color) } };
+          }
+        },
+        {
+          name: "editorColor",
+          color: toColor("#000000"),
+          appendToTheme: color => {
+            return { "&": { color: toHexString(color) } };
+          }
+        }
+      ]
     }
   ]
 };
