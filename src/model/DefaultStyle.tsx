@@ -33,6 +33,29 @@ const DefaultStyle: CodeMirrorStyle = {
               }
             };
           }
+        },
+        {
+          name: "Selection",
+          color: toColor("#007744"),
+          appendToTheme: color => {
+            return {
+              "&.cm-focused .cm-selectionBackground, ::selection": {
+                backgroundColor: toHexString(color)
+              }
+            };
+          }
+        }
+      ]
+    },
+    {
+      title: "Gutter",
+      items: [
+        {
+          name: "Background",
+          color: toColor("#ffffff"),
+          appendToTheme: color => {
+            return { ".cm-gutters": { backgroundColor: toHexString(color) } };
+          }
         }
       ]
     }
