@@ -7,14 +7,14 @@ const DefaultStyle: CodeMirrorStyle = {
       title: "Editor",
       items: [
         {
-          name: "editorBackgroundColor",
+          name: "Background",
           color: toColor("#ffffff"),
           appendToTheme: color => {
             return { "&": { backgroundColor: toHexString(color) } };
           }
         },
         {
-          name: "editorColor",
+          name: "Text",
           color: toColor("#000000"),
           appendToTheme: color => {
             return { "&": { color: toHexString(color) } };

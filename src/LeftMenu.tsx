@@ -16,6 +16,7 @@ const LeftMenu = () => {
         <Section key={sectionIndex} title={section.title}>
           {section.items.map((style, itemIndex) => (
             <StyleItem
+              className={styles.styleItem}
               key={itemIndex}
               title={style.name}
               initialColor={style.color}
