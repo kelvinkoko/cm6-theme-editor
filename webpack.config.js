@@ -79,7 +79,8 @@ const config = {
         '<!DOCTYPE html><html><head><meta charset="utf-8"><title>' +
         htmlWebpackPlugin.options.title +
         '</title></head><body><div id="app"></div></body></html>',
-      filename: "index.html"
+      filename: "index.html",
+      title: "CodeMirror 6 Theme Editor"
     })
   ],
   resolve: {
