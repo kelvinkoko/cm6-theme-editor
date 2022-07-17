@@ -33,7 +33,7 @@ type SectionHeader = {
 const SectionHeader = ({ title, isExpanded, onClick }: SectionHeader) => {
   return (
     <div onClick={onClick}>
-      <div className={styles.row}>
+      <div className={styles.headerRow}>
         <div className={styles.title}>{title}</div>
         <Arrow
           viewBox="0 0 13 8"
