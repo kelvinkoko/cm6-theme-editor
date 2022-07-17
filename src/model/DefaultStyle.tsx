@@ -56,6 +56,13 @@ const DefaultStyle: CodeMirrorStyle = {
           appendToTheme: color => {
             return { ".cm-gutters": { backgroundColor: toHexString(color) } };
           }
+        },
+        {
+          name: "Line Numbers",
+          color: toColor("#000000"),
+          appendToTheme: color => {
+            return { ".cm-gutters": { color: toHexString(color) } };
+          }
         }
       ]
     }

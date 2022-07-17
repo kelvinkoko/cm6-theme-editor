@@ -12,6 +12,7 @@ type ColorSelectorProps = {
 const ColorSelector = ({ initialColor, onChange }: ColorSelectorProps) => {
   const [color, setColor] = useState<Color>(initialColor);
   const [isShowingPicker, setIsShowingPicker] = useState(false);
+  const [clickY, setClickY] = useState(0);
   const background = toRgbaString(color);
 
   const handleColorChange = (newColor: any) => {
@@ -19,6 +20,7 @@ const ColorSelector = ({ initialColor, onChange }: ColorSelectorProps) => {
     onChange(newColor.rgb);
   };
 
+  console.log(clickY, isOverflowOutsideBottom(clickY));
   return (
     <div>
       <div className={styles.selector}>
@@ -26,13 +28,18 @@ const ColorSelector = ({ initialColor, onChange }: ColorSelectorProps) => {
         <div
           className={styles.color}
           style={{ backgroundColor: background }}
-          onClick={() => {
+          onClick={event => {
+            setClickY(event.clientY);
             setIsShowingPicker(!isShowingPicker);
           }}
         />
       </div>
       {isShowingPicker ? (
-        <div className={styles.popover}>
+        <div
+          className={`${styles.popover} ${
+            isOverflowOutsideBottom(clickY) ? styles.alignBottom : ""
+          }`}
+        >
           <div
             className={styles.cover}
             onClick={() => {
@@ -45,5 +52,12 @@ const ColorSelector = ({ initialColor, onChange }: ColorSelectorProps) => {
     </div>
   );
 };
+
+const isOverflowOutsideBottom = (clickY: number) => {
+  const windowHeight = window.innerHeight;
+  return clickY > windowHeight - PICKER_HEIGHT;
+};
+
+const PICKER_HEIGHT: number = 300;
 
 export default ColorSelector;
