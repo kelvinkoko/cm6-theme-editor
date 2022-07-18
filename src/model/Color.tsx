@@ -1,3 +1,5 @@
+export type HexString = `#${string}`;
+
 export interface Color {
   readonly r: number;
   readonly g: number;
@@ -14,7 +16,7 @@ const toHex = (value: number): string => {
   return hex.length == 1 ? "0" + hex : hex;
 };
 
-export const toHexString = (color: Color): string => {
+export const toHexString = (color: Color): HexString => {
   return `#${toHex(color.r)}${toHex(color.g)}${toHex(color.b)}`;
 };
 

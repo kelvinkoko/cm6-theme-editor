@@ -1,11 +1,15 @@
 import { indentWithTab } from "@codemirror/commands";
 import { javascript } from "@codemirror/lang-javascript";
+import { syntaxHighlighting } from "@codemirror/language";
 import { Compartment, Extension } from "@codemirror/state";
 import { EditorView, keymap } from "@codemirror/view";
 import * as React from "react";
 import { useEffect } from "react";
 import { CodeMirrorStyle } from "../model/CodeMirrorStyle";
-import { toThemeObject } from "../themeGenerator/ThemeGenerator";
+import {
+  toHighlighStyle,
+  toThemeObject
+} from "../themeGenerator/ThemeGenerator";
 import useCodeMirror from "./useCodeMirror";
 
 type CodeMirrorProps = {
@@ -62,7 +66,8 @@ const setTheme = (
 
 const createTheme = (cmStyle: CodeMirrorStyle) => {
   const theme = EditorView.theme(toThemeObject(cmStyle));
-  return theme;
+  const highlight = syntaxHighlighting(toHighlighStyle(cmStyle));
+  return [theme, highlight];
 };
 
 export default CodeMirror;

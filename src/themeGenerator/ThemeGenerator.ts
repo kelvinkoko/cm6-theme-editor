@@ -1,4 +1,7 @@
+import { HighlightStyle } from "@codemirror/language";
 import { CodeMirrorStyle } from "../model/CodeMirrorStyle";
+import { toHexString } from "../model/Color";
+import HighlightStyleItem from "../model/HighlightStyleItem";
 import { deepMergeObject } from "../utils/ObjectUtils";
 
 export const toThemeObject = (cmStyle: CodeMirrorStyle) => {
@@ -23,4 +26,17 @@ export const basicDark = EditorView.theme(
 )
 `;
   return output;
+};
+
+const toHighlightItem = (style: HighlightStyleItem) => {
+  return {
+    tag: style.tags,
+    color: toHexString(style.color)
+  };
+};
+
+export const toHighlighStyle = (cmStyle: CodeMirrorStyle) => {
+  return HighlightStyle.define(
+    cmStyle.highlights.map(style => toHighlightItem(style))
+  );
 };

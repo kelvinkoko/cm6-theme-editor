@@ -1,3 +1,4 @@
+import { tags } from "@lezer/highlight";
 import { CodeMirrorStyle } from "./CodeMirrorStyle";
 import { toColor, toHexString } from "./Color";
 
@@ -65,6 +66,18 @@ const DefaultStyle: CodeMirrorStyle = {
           }
         }
       ]
+    }
+  ],
+  highlights: [
+    {
+      name: "Keyword",
+      tags: [tags.keyword],
+      color: toColor("#ff0000")
+    },
+    {
+      name: "Function",
+      tags: [tags.function(tags.variableName)],
+      color: toColor("#007744")
     }
   ]
 };
