@@ -6,6 +6,7 @@ import { RootState } from "./store/Store";
 import { setStyle } from "./store/ThemeSlice";
 import Section from "./ui/Section";
 import StyleItem from "./ui/StyleItem";
+import { updateArray } from "./utils/ObjectUtils";
 
 const LeftMenu = () => {
   const cmStyle = useSelector((state: RootState) => state.theme.style);
@@ -71,14 +72,6 @@ const LeftMenu = () => {
       </Section>
     </div>
   );
-};
-
-// Update a readonly array with index and object as input
-// Return a new array with the updated object
-const updateArray = (array: readonly any[], index: number, object: any) => {
-  const newArray = [...array];
-  newArray[index] = object;
-  return newArray;
 };
 
 export default LeftMenu;

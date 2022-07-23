@@ -14,3 +14,15 @@ export const deepMergeObject = (obj1: any, obj2: any): any => {
   }
   return result;
 };
+
+// Update a readonly array with index and object as input
+// Return a new array with the updated object
+export const updateArray = (
+  array: readonly any[],
+  index: number,
+  object: any
+) => {
+  const newArray = [...array];
+  newArray[index] = object;
+  return newArray;
+};
