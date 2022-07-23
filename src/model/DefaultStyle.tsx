@@ -72,11 +72,13 @@ const DefaultStyle: CodeMirrorStyle = {
     {
       name: "Keyword",
       tags: [tags.keyword],
+      tagsInString: "[tags.keyword]",
       color: toColor("#ff0000")
     },
     {
       name: "Function",
       tags: [tags.function(tags.variableName)],
+      tagsInString: " [tags.function(tags.variableName)]",
       color: toColor("#007744")
     }
   ]

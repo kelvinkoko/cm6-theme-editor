@@ -17,13 +17,35 @@ export const toThemeObject = (cmStyle: CodeMirrorStyle) => {
   return theme;
 };
 
+const toExportHighlightItem = (style: HighlightStyleItem) => {
+  return `
+  {
+    tag: ${style.tagsInString},
+    color: "${toHexString(style.color)}"
+  }
+  `;
+};
+
+const toExportHighlightItems = (cmStyle: CodeMirrorStyle) => {
+  return cmStyle.highlights.map(style => toExportHighlightItem(style));
+};
+
 export const generate = (themeName: string, style: CodeMirrorStyle): string => {
+  const highlight = toExportHighlightItems(style);
   const output = `
 import { EditorView } from '@codemirror/view'
+import { HighlightStyle, syntaxHighlighting } from '@codemirror/language'
+import { tags } from "@lezer/highlight";
 
-export const basicDark = EditorView.theme(
-    ${JSON.stringify(toThemeObject(style), null, 4)}
-)
+const theme = ${JSON.stringify(toThemeObject(style), null, 4)}
+const highlightStyles = HighlightStyle.define([   
+    ${highlight.join(",\n")}
+])
+
+export const ${themeName} = [
+    EditorView.theme(theme),
+    syntaxHighlighting(highlightStyles)
+]
 `;
   return output;
 };
@@ -35,8 +57,10 @@ const toHighlightItem = (style: HighlightStyleItem) => {
   };
 };
 
+const toHighlightItems = (cmStyle: CodeMirrorStyle) => {
+  return cmStyle.highlights.map(style => toHighlightItem(style));
+};
+
 export const toHighlighStyle = (cmStyle: CodeMirrorStyle) => {
-  return HighlightStyle.define(
-    cmStyle.highlights.map(style => toHighlightItem(style))
-  );
+  return HighlightStyle.define(toHighlightItems(cmStyle));
 };

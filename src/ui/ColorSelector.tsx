@@ -20,7 +20,6 @@ const ColorSelector = ({ initialColor, onChange }: ColorSelectorProps) => {
     onChange(newColor.rgb);
   };
 
-  console.log(clickY, isOverflowOutsideBottom(clickY));
   return (
     <div>
       <div className={styles.selector}>
