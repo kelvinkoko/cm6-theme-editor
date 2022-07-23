@@ -3,9 +3,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: scroll;
 }
 
 .downloadButton {
+  flex: 0 0 auto;
   color: #ffffff;
   width: 270px;
   height: 60px;
