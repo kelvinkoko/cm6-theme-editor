@@ -2,6 +2,7 @@ import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./App.module.css";
 import { Color } from "./model/Color";
+import DefaultStyle from "./model/DefaultStyle";
 import { RootState } from "./store/Store";
 import { setStyle } from "./store/ThemeSlice";
 import Section from "./ui/Section";
@@ -70,6 +71,14 @@ const LeftMenu = () => {
           />
         ))}
       </Section>
+      <div
+        className={styles.resetButton}
+        onClick={() => {
+          dispatch(setStyle(DefaultStyle));
+        }}
+      >
+        Reset to default
+      </div>
     </div>
   );
 };

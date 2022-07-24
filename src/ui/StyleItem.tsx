@@ -11,14 +11,14 @@ type StyleItemProps = {
 };
 const StyleItem = ({
   title,
-  initialColor,
+  initialColor: color,
   setColor,
   className
 }: StyleItemProps) => {
   return (
     <div className={className}>
       <div className={styles.title}>{title}</div>
-      <ColorSelector initialColor={initialColor} onChange={setColor} />
+      <ColorSelector color={color} onChange={setColor} />
     </div>
   );
 };
